@@ -291,6 +291,10 @@ public class SortShow extends JPanel {
 		int i = first;
 		int j = last -1;
 
+		paintComponent(this.getGraphics());
+		//Causing a delay for 10ms
+		delay(10);
+
 		if(first == last)return;
 
 		for(;;){
