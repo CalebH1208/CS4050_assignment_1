@@ -287,7 +287,7 @@ public class SortGUI {
 			bubble.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the bubble sort method
-					sortArea.Bubble_Sort();
+					sortArea.BubbleSort();
 					//The amount of time taken for bubble sort took
 					bubble_time_taken.setText((bubbleTime / 1000) + " Seconds");
 					//bubble sort has finished/been clicked
@@ -302,7 +302,7 @@ public class SortGUI {
 			insertion.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the insertion sort method
-					sortArea.Insertion_Sort();
+//					sortArea.InsertionSort();
 					//The amount of time taken for insertion sort took
 					insertion_time_taken.setText((insertionTime / 1000) + " Seconds");
 					//insertion sort has finished/been clicked
@@ -317,7 +317,7 @@ public class SortGUI {
 			shell.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the shell sort method
-					sortArea.Shell_Sort();
+//					sortArea.ShellSort();
 					//The amount of time taken for shell sort took
 					shell_time_taken.setText((shellTime / 1000) + " Seconds");
 					//shell sort has finished/been clicked
@@ -332,7 +332,7 @@ public class SortGUI {
 			quick.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the quick sort method
-					sortArea.Quick_Sort();
+					sortArea.QuickSort();
 					//The amount of time taken for quick sort took
 					quick_time_taken.setText((quickTime / 1000) + " Seconds");
 					//quick sort has finished/been clicked
@@ -347,7 +347,7 @@ public class SortGUI {
 			radix.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the radix sort method
-					sortArea.Radix_Sort();
+//					sortArea.RadixSort();
 					//The amount of time taken for radix sort took
 					radix_time_taken.setText((radixTime / 1000) + " Seconds");
 					//radix sort has finished/been clicked
