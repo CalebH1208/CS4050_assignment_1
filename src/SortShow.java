@@ -160,8 +160,8 @@ public class SortShow extends JPanel {
 	//////////////////////////////////////////////////////////////////////////////////////////
 		
 		//iterative merge sort method
-		public void I_MergeSort()
-		{
+	public void I_MergeSort()
+	{
 		//getting the date and time when the iterative merge sort starts
 		Calendar start = Calendar.getInstance();
 		//assigning the size for the tempArray below
@@ -266,17 +266,41 @@ public class SortShow extends JPanel {
 			lines_lengths[index] = tempArray[index];
 	}
 
+	//////////////////////////////////////////////////////////////////////
+	public void BubbleSort(){
+		//getting the date and time when the selection sort starts
+		Calendar start = Calendar.getInstance();
+		//Using the bubble sort to lines_lengths sort the array
 
+		for(int lastIndex = total_number_of_lines-1; lastIndex > 0; lastIndex--){
+			for(int index = 0; index < lastIndex; index++){
+				order_Elements(lines_lengths, index, index + 1);
+			}
+		}
+		//getting the date and time when the bubble sort ends
+		Calendar end = Calendar.getInstance();
+		//getting the time it took for the bubble sort to execute
+		//subtracting the end time with the start time
+		SortGUI.selectionTime = end.getTime().getTime() - start.getTime().getTime();
+	}
+
+	public void order_Elements(int[] a, int i, int j){
+		if (a[i] > a[j]) {
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+		}
+	}
 
 	////////////////////////////////Quick sort ////////////////////////////
 
-	public void quickSort(){
+	public void QuickSort(){
 		//getting the date and time when the recursive merge sort starts
 		Calendar start = Calendar.getInstance();
 		//assigning the size for the tempArray below
 		tempArray = new int[total_number_of_lines];
 
-		quickSort(0,total_number_of_lines-1);
+		QuickSort(0,total_number_of_lines-1);
 		//You need to complete this part.
 
 		Calendar end = Calendar.getInstance();
@@ -286,7 +310,7 @@ public class SortShow extends JPanel {
 
 	}
 
-	public void quickSort(int first, int last){
+	public void QuickSort(int first, int last){
 		int pivot = lines_lengths[last -1];
 		int i = first;
 		int j = last -1;
@@ -304,13 +328,12 @@ public class SortShow extends JPanel {
 			else break;
 		}
 		swap(i,last-1);
-		quickSort(first,i -1);
-		quickSort(i+1,last);
+		QuickSort(first,i -1);
+		QuickSort(i+1,last);
 	}
 
 
 	//recursive merge sort method
-
 
 	//////////////////////////////////////////////////////////////////////	
 		
