@@ -251,7 +251,34 @@ public class SortShow extends JPanel {
 			lines_lengths[index] = tempArray[index];
 	}
 
-	//////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////
+	void IncrementalInsertionSort(int first, int last, int space)
+	{
+		int unsorted, i;
+		for (unsorted = first + space; unsorted <= last; unsorted = unsorted + space)
+		{
+			int first_unsorted_element = lines_lengths[unsorted];
+			for (i = unsorted - space; (i >= first) && (first_unsorted_element < lines_lengths[i]); i = i - space)
+			{
+				lines_lengths[i + space] = lines_lengths[i];
+			}
+			lines_lengths[i + space] = first_unsorted_element;
+		}
+	}
+
+
+	public void ShellSort(int first, int last)
+	{
+		int array_elements = last - first + 1;
+		for (int space = array_elements / 2; space > 0; space = space / 2)
+		{
+			for (int i = first; i < first + space; i++)
+			{
+				incrementalInsertionSort(i, last, space);
+			}
+		}
+	}
+	//////////////////////////////////////////////////////////////////////
 		
 		//This method resets the window to the scrambled lines display
 		public void reset(){
