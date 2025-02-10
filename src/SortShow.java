@@ -131,8 +131,8 @@ public class SortShow extends JPanel {
 	//////////////////////////////////////////////////////////////////////////////////////////
 		
 		//iterative merge sort method
-		public void I_MergeSort()
-		{
+	public void I_MergeSort()
+	{
 		//getting the date and time when the iterative merge sort starts
 		Calendar start = Calendar.getInstance();
 		//assigning the size for the tempArray below
@@ -235,6 +235,32 @@ public class SortShow extends JPanel {
 		// Copy the result back into the original array
 		for (index = first; index <= last; index++)
 			lines_lengths[index] = tempArray[index];
+	}
+
+	//////////////////////////////////////////////////////////////////////
+	public void Bubble_Sort(){
+		//getting the date and time when the selection sort starts
+		Calendar start = Calendar.getInstance();
+		//Using the bubble sort to lines_lengths sort the array
+
+		for(int lastIndex = total_number_of_lines-1; lastIndex > 0; lastIndex--){
+			for(int index = 0; index < lastIndex; index++){
+				order_Elements(lines_lengths, index, index + 1);
+			}
+		}
+		//getting the date and time when the bubble sort ends
+		Calendar end = Calendar.getInstance();
+		//getting the time it took for the bubble sort to execute
+		//subtracting the end time with the start time
+		SortGUI.selectionTime = end.getTime().getTime() - start.getTime().getTime();
+	}
+
+	public void order_Elements(int[] a, int i, int j){
+		if (a[i] > a[j]) {
+			int temp = a[i];
+			a[i] = a[j];
+			a[j] = temp;
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////	
