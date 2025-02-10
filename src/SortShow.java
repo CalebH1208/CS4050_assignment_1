@@ -75,6 +75,12 @@ public class SortShow extends JPanel {
 
 			//You need to complete this part.
 
+			for (int i = 0; i < total_number_of_lines - 1; i++)
+			{
+				int next_smallest = getIndexOfSmallest(i, total_number_of_lines - 1);
+				swap(i, next_smallest);
+			}
+
 			//getting the date and time when the selection sort ends
 			Calendar end = Calendar.getInstance();
 			//getting the time it took for the selection sort to execute 
@@ -84,10 +90,18 @@ public class SortShow extends JPanel {
 		
 		//this method gets the smallest element in the array of lines_lengths
 		public int getIndexOfSmallest(int first, int last){
-
 			//You need to complete this part.
-
-			return 1; //modify this line
+			int min_value = lines_lengths[first];
+			int min_index = first;
+			for (int i = first + 1; i <= last; i++) {
+				//if current element is less than minimum value, replace min_value and min_index
+				if (lines_lengths[i] < lines_lengths[min_index])
+				{
+					min_value = lines_lengths[i];
+					min_index = i;
+				}
+			}
+			return min_index; //modify this line
 		}
 		
 	///////////////////////////////////////////////////////////////////////////////////
