@@ -270,50 +270,43 @@ public class SortShow extends JPanel {
 
 	////////////////////////////////Quick sort ////////////////////////////
 
-	public void R_MergeSort(int first, int last){
-		int center = first + ((last-first)/2);
+	public void quickSort(){
+		//getting the date and time when the recursive merge sort starts
+		Calendar start = Calendar.getInstance();
+		//assigning the size for the tempArray below
+		tempArray = new int[total_number_of_lines];
 
-		if(first < last) {
-			R_MergeSort(first, center);
-			R_MergeSort(center + 1, last);
-			R_Merge(first, center, last);
-			//Causing a delay for 10ms
-			delay(10);
+		quickSort(0,total_number_of_lines-1);
+		//You need to complete this part.
+
+		Calendar end = Calendar.getInstance();
+		//getting the time it took for the iterative merge sort to execute
+		//subtracting the end time with the start time
+		SortGUI.rmergeTime = end.getTime().getTime() - start.getTime().getTime();
+
+	}
+
+	public void quickSort(int first, int last){
+		int pivot = lines_lengths[last -1];
+		int i = first;
+		int j = last -1;
+
+		if(first == last)return;
+
+		for(;;){
+			while(lines_lengths[++i] < pivot){}
+			while(lines_lengths[--j]> pivot){}
+			if(i < j) swap(i,j);
+			else break;
 		}
+		swap(i,last-1);
+		quickSort(first,i -1);
+		quickSort(i+1,last);
 	}
 
 
 	//recursive merge sort method
-	public void R_Merge(int first, int mid, int last){
 
-		//You need to complete this part.
-		int BH1 = first; // beggining of first half
-		int EH1 = mid;	 // End of first half
-		int BH2 = mid+1; // beggining of second half
-		int EH2 = last; // end of second half
-
-		int index = BH1;
-		for(; (BH1 <=EH1) && (BH2 <= EH2);index++){
-			if(lines_lengths[BH1] < lines_lengths[BH2]){
-				tempArray[index] = lines_lengths[BH1];
-				BH1++;
-			}
-			else{
-				tempArray[index] = lines_lengths[BH2];
-				BH2++;
-			}
-		}
-		for(; BH1 <= EH1;BH1++,index++){
-			tempArray[index] = lines_lengths[BH1];
-		}
-		for(; BH2 <= EH2;BH2++,index++){
-			tempArray[index] = lines_lengths[BH2];
-		}
-		for(int i = first;i <=last;i++){
-			lines_lengths[i] = tempArray[i];
-		}
-		paintComponent(this.getGraphics());
-	}
 
 	//////////////////////////////////////////////////////////////////////	
 		
