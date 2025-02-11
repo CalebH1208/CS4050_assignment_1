@@ -60,9 +60,9 @@ public class SortGUI {
 
 		MyScreen screen = new MyScreen();
 		//Setting a title to the GUI window
-		screen.setTitle("Assignment-1 by Abdelnasser Ouda");
+		screen.setTitle("Assignment-1 by Group 11");
 		//setting the size of the window 
-		screen.setSize(975+sortArea.total_number_of_lines, 450);
+		screen.setSize(1000+sortArea.total_number_of_lines, 750);
 		//the operation when the frame is closed
 		screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//is set to true to display the frame
@@ -145,7 +145,7 @@ public class SortGUI {
 			//setting the font of scramble button
 			scramble_button.setFont(new Font("Arial", Font.BOLD, 15));
 			//A Panel to hold the radio_button_selection and set the GridLayout
-			JPanel radio_button_selection_Panel = new JPanel(new GridLayout(4, 1, 3, 3));
+			JPanel radio_button_selection_Panel = new JPanel(new GridLayout(9, 1, 3, 3));
 
 			//Adding the selection button to the radio_button_selection_Panel
 			radio_button_selection_Panel.add(selection);
@@ -169,7 +169,7 @@ public class SortGUI {
 			radio_button_selection_Panel.setBorder(new javax.swing.border.TitledBorder("Sort Algorithms"));
 
 			//A Panel to hold the time_Panel and set the GridLayout
-			JPanel time_Panel = new JPanel(new GridLayout(6, 1, 3, 3));
+			JPanel time_Panel = new JPanel(new GridLayout(16, 1, 3, 3));
 			//Adding the selection_time_label to the time_Panel
 			time_Panel.add(selection_time_label);
 			//Adding the selection_time_taken to the time_Panel
@@ -205,7 +205,7 @@ public class SortGUI {
 
 			//A Panel to hold the buttons_area_Panel and set the GridLayout
 			//This buttons_area_Panel will hold scrambleButton, radio_button_selection and the time_Panel
-			JPanel buttons_area_Panel = new JPanel(new GridLayout(5, 1, 5, 5));
+			JPanel buttons_area_Panel = new JPanel(new GridLayout(3, 1, 5, 5));
 			//adding scramble_button to the buttons_area_Panel
 			buttons_area_Panel.add(scramble_button);
 			//adding radio_button_selection_Panel to the buttons_area_Panel
