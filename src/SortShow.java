@@ -75,6 +75,12 @@ public class SortShow extends JPanel {
 
 			//You need to complete this part.
 
+			for (int i = 0; i < total_number_of_lines - 1; i++)
+			{
+				int next_smallest = getIndexOfSmallest(i, total_number_of_lines - 1);
+				swap(i, next_smallest);
+			}
+
 			//getting the date and time when the selection sort ends
 			Calendar end = Calendar.getInstance();
 			//getting the time it took for the selection sort to execute 
@@ -84,10 +90,18 @@ public class SortShow extends JPanel {
 		
 		//this method gets the smallest element in the array of lines_lengths
 		public int getIndexOfSmallest(int first, int last){
-
 			//You need to complete this part.
-
-			return 1; //modify this line
+			int min_value = lines_lengths[first];
+			int min_index = first;
+			for (int i = first + 1; i <= last; i++) {
+				//if current element is less than minimum value, replace min_value and min_index
+				if (lines_lengths[i] < lines_lengths[min_index])
+				{
+					min_value = lines_lengths[i];
+					min_index = i;
+				}
+			}
+			return min_index; //modify this line
 		}
 		
 	///////////////////////////////////////////////////////////////////////////////////
@@ -267,6 +281,35 @@ public class SortShow extends JPanel {
 	}
 
 	//////////////////////////////////////////////////////////////////////
+
+	void IncrementalInsertionSort(int first, int last, int space)
+	{
+		int unsorted, i;
+		for (unsorted = first + space; unsorted <= last; unsorted = unsorted + space)
+		{
+			int first_unsorted_element = lines_lengths[unsorted];
+			for (i = unsorted - space; (i >= first) && (first_unsorted_element < lines_lengths[i]); i = i - space)
+			{
+				lines_lengths[i + space] = lines_lengths[i];
+			}
+			lines_lengths[i + space] = first_unsorted_element;
+		}
+	}
+
+
+	public void ShellSort(int first, int last)
+	{
+		int array_elements = last - first + 1;
+		for (int space = array_elements / 2; space > 0; space = space / 2)
+		{
+			for (int i = first; i < first + space; i++)
+			{
+				incrementalInsertionSort(i, last, space);
+			}
+		}
+	}
+	//////////////////////////////////////////////////////////////////////
+
 	public void BubbleSort(){
 		//getting the date and time when the selection sort starts
 		Calendar start = Calendar.getInstance();
@@ -334,6 +377,7 @@ public class SortShow extends JPanel {
 	//recursive merge sort method
 
 	//////////////////////////////////////////////////////////////////////	
+
 		
 		//This method resets the window to the scrambled lines display
 		public void reset(){
