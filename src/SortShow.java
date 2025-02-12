@@ -275,13 +275,15 @@ public class SortShow extends JPanel {
 		for(int lastIndex = total_number_of_lines-1; lastIndex > 0; lastIndex--){
 			for(int index = 0; index < lastIndex; index++){
 				order_Elements(lines_lengths, index, index + 1);
+				paintComponent(this.getGraphics());
+				delay(0);
 			}
 		}
 		//getting the date and time when the bubble sort ends
 		Calendar end = Calendar.getInstance();
 		//getting the time it took for the bubble sort to execute
 		//subtracting the end time with the start time
-		SortGUI.selectionTime = end.getTime().getTime() - start.getTime().getTime();
+		SortGUI.bubbleTime = end.getTime().getTime() - start.getTime().getTime();
 	}
 
 	public void order_Elements(int[] a, int i, int j){
