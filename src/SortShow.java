@@ -118,7 +118,7 @@ public class SortShow extends JPanel {
 				R_MergeSort(center + 1, last);
 				R_Merge(first, center, last);
 				//Causing a delay for 10ms
-				delay(10);
+				//delay(10);
 			}
 		}
 
@@ -213,7 +213,7 @@ public class SortShow extends JPanel {
 			//redrawing the lines_lengths
 			paintComponent(this.getGraphics());
 			//Causing a delay for 10ms
-			delay(10);
+			//delay(10);
 		}
 		// Returns index of last merged pair
 		return beginSegment1;
@@ -318,7 +318,7 @@ public class SortShow extends JPanel {
 
 		paintComponent(this.getGraphics());
 		//Causing a delay for 10ms
-		delay(10);
+		//delay(10);
 
 
 
