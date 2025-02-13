@@ -79,6 +79,8 @@ public class SortShow extends JPanel {
 			{
 				int next_smallest = getIndexOfSmallest(i, total_number_of_lines - 1);
 				swap(i, next_smallest);
+				paintComponent(this.getGraphics());
+				delay(1);
 			}
 
 			//getting the date and time when the selection sort ends
@@ -132,7 +134,7 @@ public class SortShow extends JPanel {
 				R_MergeSort(center + 1, last);
 				R_Merge(first, center, last);
 				//Causing a delay for 10ms
-				//delay(10);
+				delay(10);
 			}
 		}
 
@@ -261,7 +263,8 @@ public class SortShow extends JPanel {
 			}
 		}
 		//redrawing the lines_lengths
-		//paintComponent(this.getGraphics());
+		paintComponent(this.getGraphics());
+		delay(1);
 
 		// Finish off the nonempty sub-array
 
@@ -292,7 +295,6 @@ public class SortShow extends JPanel {
 			{
 				lines_lengths[i + space] = lines_lengths[i];
 				paintComponent(this.getGraphics());
-
 			}
 			lines_lengths[i + space] = first_unsorted_element;
 		}
@@ -300,6 +302,18 @@ public class SortShow extends JPanel {
 
 	}
 
+	public void ShellSort(){
+		//getting the date and time when the shell sort starts
+		Calendar start = Calendar.getInstance();
+		//Using the shell sort to lines_lengths sort the array
+
+		ShellSort(0, total_number_of_lines-1);
+
+		Calendar end = Calendar.getInstance();
+		//getting the time it took for the shell sort to execute
+		//subtracting the end time with the start time
+		SortGUI.shellTime = end.getTime().getTime() - start.getTime().getTime();
+	}
 
 	public void ShellSort(int first, int last)
 	{
@@ -316,7 +330,7 @@ public class SortShow extends JPanel {
 	//////////////////////////////////////////////////////////////////////
 
 	public void BubbleSort(){
-		//getting the date and time when the selection sort starts
+		//getting the date and time when the bubble sort starts
 		Calendar start = Calendar.getInstance();
 		//Using the bubble sort to lines_lengths sort the array
 
@@ -384,6 +398,9 @@ public class SortShow extends JPanel {
 		else{
 			InsertionSort(first,last);
 		}
+		paintComponent(this.getGraphics());
+		//Causing a delay for 10ms
+		delay(10);
 	}
 
 	//////////////////////////////////// insertion sort ////////////////
@@ -412,12 +429,12 @@ public class SortShow extends JPanel {
 			for(j = p;j > first && tmp < lines_lengths[j-1];j--){
 				lines_lengths[j] = lines_lengths[j-1];
 				paintComponent(this.getGraphics());
-				//delay(10);
+				delay(1);
 			}
 			lines_lengths[j]=tmp;
 		}
 		paintComponent(this.getGraphics());
-		//delay(10);
+		delay(1);
 	}
 
 	//////////////////////////////////////////////////////////////////////	

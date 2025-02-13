@@ -317,7 +317,7 @@ public class SortGUI {
 			shell.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the shell sort method
-	//				sortArea.ShellSort();
+					sortArea.ShellSort();
 					//The amount of time taken for shell sort took
 					shell_time_taken.setText((shellTime / 1000) + " Seconds");
 					//shell sort has finished/been clicked
@@ -347,7 +347,7 @@ public class SortGUI {
 			radix.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//Sorting the array in the radix sort method
-		//			sortArea.RadixSort();
+					sortArea.RadixSort();
 					//The amount of time taken for radix sort took
 					radix_time_taken.setText((radixTime / 1000) + " Seconds");
 					//radix sort has finished/been clicked
