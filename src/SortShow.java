@@ -132,7 +132,7 @@ public class SortShow extends JPanel {
 				R_MergeSort(center + 1, last);
 				R_Merge(first, center, last);
 				//Causing a delay for 10ms
-				delay(10);
+				//delay(10);
 			}
 		}
 
@@ -227,7 +227,7 @@ public class SortShow extends JPanel {
 			//redrawing the lines_lengths
 			paintComponent(this.getGraphics());
 			//Causing a delay for 10ms
-			delay(10);
+			//delay(10);
 		}
 		// Returns index of last merged pair
 		return beginSegment1;
@@ -291,9 +291,13 @@ public class SortShow extends JPanel {
 			for (i = unsorted - space; (i >= first) && (first_unsorted_element < lines_lengths[i]); i = i - space)
 			{
 				lines_lengths[i + space] = lines_lengths[i];
+				paintComponent(this.getGraphics());
+
 			}
 			lines_lengths[i + space] = first_unsorted_element;
 		}
+		paintComponent(this.getGraphics());
+
 	}
 
 
@@ -304,7 +308,7 @@ public class SortShow extends JPanel {
 		{
 			for (int i = first; i < first + space; i++)
 			{
-				incrementalInsertionSort(i, last, space);
+				IncrementalInsertionSort(i, last, space);
 			}
 		}
 	}
@@ -356,25 +360,64 @@ public class SortShow extends JPanel {
 	}
 
 	public void QuickSort(int first, int last){
-		int pivot = lines_lengths[last -1];
-		int i = first;
-		int j = last -1;
+		if(first + 5 <= last) {
+			int pivot = lines_lengths[last - 1];
+			int i = first -1;
+			int j = last -1;
 
-		if(first == last)return;
+			paintComponent(this.getGraphics());
+			//Causing a delay for 10ms
+			//delay(10);
 
-		for(;;){
-			while(lines_lengths[++i] < pivot){}
-			while(lines_lengths[--j]> pivot){}
-			if(i < j) swap(i,j);
-			else break;
+			while (true) {
+				while (lines_lengths[++i] < pivot) ;
+				while (--j >= first && lines_lengths[j] > pivot) ;
+
+				if (i >= j) break;
+				swap(i, j);
+			}
+			swap(i, last - 1);
+			QuickSort(first, i);
+			QuickSort(i + 1, last);
 		}
-		swap(i,last-1);
-		QuickSort(first,i -1);
-		QuickSort(i+1,last);
+		else{
+			InsertionSort(first,last);
+		}
 	}
 
+	//////////////////////////////////// insertion sort ////////////////
 
-	//recursive merge sort method
+	public void InsertionSort(){
+		//getting the date and time when the recursive merge sort starts
+		Calendar start = Calendar.getInstance();
+		//assigning the size for the tempArray below
+		tempArray = new int[total_number_of_lines];
+
+
+		InsertionSort(0,total_number_of_lines-1);
+		//You need to complete this part.
+
+		Calendar end = Calendar.getInstance();
+		//getting the time it took for the iterative merge sort to execute
+		//subtracting the end time with the start time
+		SortGUI.rmergeTime = end.getTime().getTime() - start.getTime().getTime();
+
+	}
+
+	public void InsertionSort(int first, int last){
+		for(int p = first+1;p<= last;p++){
+			int tmp = lines_lengths[p];
+			int j;
+			for(j = p;j > first && tmp < lines_lengths[j-1];j--){
+				lines_lengths[j] = lines_lengths[j-1];
+				paintComponent(this.getGraphics());
+				//delay(10);
+			}
+			lines_lengths[j]=tmp;
+		}
+		paintComponent(this.getGraphics());
+		//delay(10);
+	}
 
 	//////////////////////////////////////////////////////////////////////	
 
