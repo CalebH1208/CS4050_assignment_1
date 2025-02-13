@@ -362,9 +362,10 @@ public class SortShow extends JPanel {
 		//getting the date and time when the recursive merge sort starts
 		Calendar start = Calendar.getInstance();
 		//assigning the size for the tempArray below
-		tempArray = new int[total_number_of_lines];
+//		tempArray = new int[total_number_of_lines];
 
-		QuickSort(0,total_number_of_lines-1);
+		QuickSort(0,total_number_of_lines);
+
 		//You need to complete this part.
 
 		Calendar end = Calendar.getInstance();
