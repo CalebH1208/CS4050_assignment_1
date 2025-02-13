@@ -424,7 +424,7 @@ public class SortShow extends JPanel {
 	}
 
 	public void InsertionSort(int first, int last){
-		for(int p = first+1;p<= last;p++){
+		for(int p = first+1;p<= last && p < total_number_of_lines;p++){
 			int tmp = lines_lengths[p];
 			int j;
 			for(j = p;j > first && tmp < lines_lengths[j-1];j--){
