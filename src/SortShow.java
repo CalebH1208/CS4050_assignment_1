@@ -303,6 +303,7 @@ public class SortShow extends JPanel {
 
 	public void ShellSort(int first, int last)
 	{
+
 		int array_elements = last - first + 1;
 		for (int space = array_elements / 2; space > 0; space = space / 2)
 		{
@@ -355,7 +356,7 @@ public class SortShow extends JPanel {
 		Calendar end = Calendar.getInstance();
 		//getting the time it took for the iterative merge sort to execute
 		//subtracting the end time with the start time
-		SortGUI.rmergeTime = end.getTime().getTime() - start.getTime().getTime();
+		SortGUI.quickTime = end.getTime().getTime() - start.getTime().getTime();
 
 	}
 
@@ -367,7 +368,7 @@ public class SortShow extends JPanel {
 
 			paintComponent(this.getGraphics());
 			//Causing a delay for 10ms
-			//delay(10);
+			delay(10);
 
 			while (true) {
 				while (lines_lengths[++i] < pivot) ;
@@ -400,7 +401,7 @@ public class SortShow extends JPanel {
 		Calendar end = Calendar.getInstance();
 		//getting the time it took for the iterative merge sort to execute
 		//subtracting the end time with the start time
-		SortGUI.rmergeTime = end.getTime().getTime() - start.getTime().getTime();
+		SortGUI.insertionTime = end.getTime().getTime() - start.getTime().getTime();
 
 	}
 
