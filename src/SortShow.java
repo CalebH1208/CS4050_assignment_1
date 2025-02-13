@@ -475,7 +475,21 @@ public class SortShow extends JPanel {
 
 		for (int i = 0; i < total_number_of_lines; i++) {
 			lines_lengths[i] = result[i];
+			paintComponent(this.getGraphics());
+			delay(10);
 		}
+	}
+
+	public void RadixSort(){
+		//getting the date and time when the radix sort starts
+		Calendar start = Calendar.getInstance();
+
+		RadixSort(0, total_number_of_lines-1);
+
+		Calendar end = Calendar.getInstance();
+		//getting the time it took for the radix sort to execute
+		//subtracting the end time with the start time
+		SortGUI.radixTime = end.getTime().getTime() - start.getTime().getTime();
 	}
 
 	public void RadixSort(int first, int last){
