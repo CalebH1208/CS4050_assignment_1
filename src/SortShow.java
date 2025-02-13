@@ -438,6 +438,54 @@ public class SortShow extends JPanel {
 		delay(1);
 	}
 
+	//////////////////////////////////Radix Sort////////////////////////////////////
+	public int GetMaximumElement(int first, int last)
+	{
+		int max = lines_lengths[first];
+		for (int i = first + 1; i < last; i++)
+		{
+			if (lines_lengths[i] > max)
+			{
+				max = lines_lengths[i];
+			}
+		}
+		return max;
+	}
+
+	public void CountingSort(int tens){
+		int[] count = new int[10];
+		int[] result = new int[total_number_of_lines];
+
+		for (int i = 0; i < total_number_of_lines; i++)
+		{
+			int bucket = (lines_lengths[i] / tens) % 10;
+			count[bucket]++;
+		}
+
+		for (int i = 1; i < 10; i++) {
+			count[i] += count[i - 1];
+		}
+
+		for (int i = total_number_of_lines - 1; i >= 0; i--)
+		{
+			int digit = (lines_lengths[i] / tens) % 10;
+			result[count[digit] - 1] = lines_lengths[i];
+			count[digit]--;
+		}
+
+		for (int i = 0; i < total_number_of_lines; i++) {
+			lines_lengths[i] = result[i];
+		}
+	}
+
+	public void RadixSort(int first, int last){
+		int max_element = GetMaximumElement(first, last);
+		for (int i = 1; max_element / i > 0; i *= 10)
+		{
+			CountingSort(i);
+		}
+	}
+
 	//////////////////////////////////////////////////////////////////////	
 
 		
