@@ -73,7 +73,6 @@ public class SortShow extends JPanel {
 			Calendar start = Calendar.getInstance();
 			//Using the selection sort to lines_lengths sort the array
 
-			//You need to complete this part.
 			//Iterate over every line, swapping with the next smallest item
 			for (int i = 0; i < total_number_of_lines - 1; i++)
 			{
@@ -94,7 +93,6 @@ public class SortShow extends JPanel {
 		
 		//this method gets the smallest element in the array of lines_lengths
 		public int getIndexOfSmallest(int first, int last){
-			//You need to complete this part.
 			int min_value = lines_lengths[first];
 			int min_index = first;
 			for (int i = first + 1; i <= last; i++) {
@@ -109,7 +107,7 @@ public class SortShow extends JPanel {
 				//Include necessary delay
 				delay(1);
 			}
-			return min_index; //modify this line
+			return min_index;
 		}
 		
 	///////////////////////////////////////////////////////////////////////////////////
@@ -296,7 +294,7 @@ public class SortShow extends JPanel {
 
 	//////////////////////////////////////////////////////////////////////
 
-	void IncrementalInsertionSort(int first, int last, int space)
+	public void IncrementalInsertionSort(int first, int last, int space)
 	{
 		//Declare variables
 		int unsorted, i;
@@ -477,12 +475,14 @@ public class SortShow extends JPanel {
 	}
 
 	//////////////////////////////////Radix Sort////////////////////////////////////
+	//method that returns maximum element of lines_lengths
 	public int GetMaximumElement(int first, int last)
 	{
 		//Iterate over all elements from first to last and find the maximum value
 		int max = lines_lengths[first];
 		for (int i = first + 1; i < last; i++)
 		{
+			//if a new max value is found, update it
 			if (lines_lengths[i] > max)
 			{
 				max = lines_lengths[i];
@@ -490,21 +490,26 @@ public class SortShow extends JPanel {
 		}
 		return max;
 	}
-
+	//counting sort method used in radix sort
 	public void CountingSort(int tens){
+		//bucket array
 		int[] count = new int[10];
+		//sorted array result
 		int[] result = new int[total_number_of_lines];
 
+		//iterate through each lines_lengths element and counts occurrences of each base10 number
 		for (int i = 0; i < total_number_of_lines; i++)
 		{
 			int bucket = (lines_lengths[i] / tens) % 10;
 			count[bucket]++;
 		}
 
+		//change count array to show element placement in result array
 		for (int i = 1; i < 10; i++) {
 			count[i] += count[i - 1];
 		}
 
+		//placing sorted lines_lengths elements into result array
 		for (int i = total_number_of_lines - 1; i >= 0; i--)
 		{
 			int digit = (lines_lengths[i] / tens) % 10;
@@ -521,10 +526,12 @@ public class SortShow extends JPanel {
 		}
 	}
 
+	//radix sort wrapper
 	public void RadixSort(){
 		//getting the date and time when the radix sort starts
 		Calendar start = Calendar.getInstance();
 
+		//perform RadixSort
 		RadixSort(0, total_number_of_lines-1);
 
 		Calendar end = Calendar.getInstance();
@@ -533,10 +540,14 @@ public class SortShow extends JPanel {
 		SortGUI.radixTime = end.getTime().getTime() - start.getTime().getTime();
 	}
 
+	//radix sort method
 	public void RadixSort(int first, int last){
+		//get the largest element in lines_lengths
 		int max_element = GetMaximumElement(first, last);
+		//loop through each power of 10 of the max_element
 		for (int i = 1; max_element / i > 0; i *= 10)
 		{
+			//perform CountingSort
 			CountingSort(i);
 			//Paint to screen
 			paintComponent(this.getGraphics());
