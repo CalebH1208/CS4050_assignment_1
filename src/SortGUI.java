@@ -124,6 +124,16 @@ public class SortGUI {
 			rmerge_time_taken.setForeground(Color.RED);
 			//The time displayed for iterative merge sort will be the colour red
 			imerge_time_taken.setForeground(Color.RED);
+			//The time displayed for bubble sort will be the colour red
+			bubble_time_taken.setForeground(Color.RED);
+			//The time displayed for insertion sort will be the colour red
+			insertion_time_taken.setForeground(Color.RED);
+			//The time displayed for shell sort will be the colour red
+			shell_time_taken.setForeground(Color.RED);
+			//The time displayed for quick sort will be the colour red
+			quick_time_taken.setForeground(Color.RED);
+			//The time displayed for radix sort will be the colour red
+			radix_time_taken.setForeground(Color.RED);
 			//The selection button text will be the colour blue
 			selection.setForeground(Color.BLUE);
 			//The recursive merge button text will be the colour blue
